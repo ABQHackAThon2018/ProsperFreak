@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CoreApp.Data;
 using CoreApp.Models;
+using CoreApp.Models.AccountViewModels;
 using CoreApp.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CoreApp
 {
@@ -26,13 +28,31 @@ namespace CoreApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new RequireHttpsAttribute());
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            //This is OAuth config routing.
+            var googleConfig = new OAuthSettings();
+            Configuration.GetSection("OAuthSettings")
+                .Bind(googleConfig);
+            services
+                .AddAuthentication()
+                .AddGoogle(googleOptions =>
+                {
+                     googleOptions.ClientId = googleConfig.ClientId;
+                     googleOptions.ClientSecret = googleConfig.ClientSecret;
+                });
+           
+           
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
