@@ -11,6 +11,7 @@ a {
   color: #fed136;
 }
 
+
 a:hover {
   color: #fec503;
 }
@@ -28,6 +29,19 @@ h6 {
   font-weight: 700;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+/* START LOGIN DROPDOWN */
+
+button:focus {
+    outline: 0;
+}
+
+.navbar .dropdown-menu .form-control {
+    width: 200px;
+}
+
+/* END LOGIN DROPDOWN */
+
 
 section {
   padding: 100px 0;
