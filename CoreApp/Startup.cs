@@ -39,10 +39,22 @@ namespace CoreApp
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            //This is OAuth config routing.
+           
+            //This is FacebookOAuth config routing.
+              var facebookConfig = new OAuthSettings();
+            Configuration.GetSection("FacebookOAuthSettings")
+                .Bind(facebookConfig);
+            services
+                .AddAuthentication()
+                .AddFacebook(facebookOptions =>
+                {
+                    facebookOptions.AppId = facebookConfig.AppId;
+                    facebookOptions.AppSecret = facebookConfig.AppSecret;
+                });
+            
+            //This is Google OAuth config routing.
             var googleConfig = new OAuthSettings();
-            Configuration.GetSection("OAuthSettings")
+            Configuration.GetSection("GoogleOAuthSettings")
                 .Bind(googleConfig);
             services
                 .AddAuthentication()
