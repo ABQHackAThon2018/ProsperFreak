@@ -43,6 +43,8 @@ https://www.foodpantries.org/ci/nm-albuquerque
 - [ ] donate money (rig up stripe)
 
 - [ ] find charities to volunteer at (charities API)
+https://api.data.charitynavigator.org/v2/Organizations?app_id=8ba235ec&app_key=cd38a2209a8c3b9ba4b307b7ca824dc3&state=NM&city=Albuquerque&minRating=4&sort=RATING
+
 
 - [ ] post gig work/jobs (use bynger events code & have static ratings)
 
