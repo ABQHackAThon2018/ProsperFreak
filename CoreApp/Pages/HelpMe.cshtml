@@ -1,70 +1,41 @@
 ﻿@page
-@model Pages.IndexModel
+@model CoreApp.Pages.HelpMeModel
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Pages/_Landing.cshtml";
+    ViewData["Title"] = "HelpMe";
+    Layout = "~/Pages/_HelpMeLayout.cshtml";
 }
 
 <!-- Header -->
-<header class="masthead">
-    <div class="container" style=" height: 100vh; width: 100vw; top: 100vh;">
-        <div class="row">
-            @*<div class="col-md-4">
-                    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger helpme-placement-down-left" style="" href="#services">Help Me</a>
-                </div>*@
-            <div class="col-md-12 help-placement-down-center">
-                @*<a class="fa fa-arrow-circle-down fa-5x animated arrow-placement-down js-scroll-trigger bounce" style='font-size: xx-large; color: white' href="#help">
-                </a>*@
-                <a class="btn btn-primary btn-lg btn-outline-dark animated js-scroll-trigger bounce" style="" href="/HelpMe">>>> HELP NOW <<<</a>
-            </div>
-            @*<div class="col-md-4">
-                    <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger helpus-placement-down-right" style="" href="#services">Help Us</a>
-                </div>*@
-
-
-
-        </div>
-
-    </div>
-</header>
-
 <!-- Program -->
-<section id="program">
+<section style="height: 100vh; background-color: #080A30">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading text-uppercase">3 - Step Prosper System</h2>
-                <h3 class="section-subheading text-muted">Below are the three steps, or phases, that we consider crucial to prosperity.</h3>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-spoon fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="service-heading">Today</h4>
-                <p class="text-muted">First you must last the day. This feature set will enable access to food, basic shelter, and public resources by aggrigating the convoluded data. The completion of this step will facilitate the ability to work sustainably.</p>
+            <div class="col-md-1">
             </div>
             <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-money fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="service-heading">Tomorrow</h4>
-                <p class="text-muted">Second, one must sustain themselves. This feature set will enable Prosper Freaks to seek judgement-free employment, obtain a vehicle, etc. Ranking and accountability systems will be used, similar to the Grubhub or Uber apps.</p>
+                <div class="square-service-block" style="top: 10vh; background-color: #ffc107">
+                    <a href="#">
+                        <div class="ssb-icon"><i class="fa fa-cutlery" aria-hidden="true"></i></div>
+                        <h2 class="ssb-title">I Need Help</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2">
             </div>
             <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-home fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="service-heading">Future</h4>
-                <p class="text-muted">The final step is gaining your own sustainable home. We will encorporate a community support system that utilizes successful peers to guide struggling ABQ residents on their path to prosperity. Poverty is contaigous, but so is success.</p>
+                <div class="square-service-block" style="top: 10vh; background-color: #ffc107">
+                    <a href="#">
+                        <div class="ssb-icon"> <i class="fa fa-heart" aria-hidden="true"></i> </div>
+                        <h2 class="ssb-title">I Wanna Help</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-1">
             </div>
         </div>
     </div>
 </section>
+
 <!-- Milestones -->
 <section id="milestones">
     <div class="container">
