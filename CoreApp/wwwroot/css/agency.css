@@ -68,6 +68,37 @@ section h3.section-subheading {
   }
 }
 
+.btn-circle-arrow {
+    font-size: 26px;
+    width: 55px;
+    height: 55px;
+    margin-top: 15px;
+    line-height: 45px;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+    color: white;
+    border: 2px solid white;
+    border-radius: 100% !important;
+    background: transparent;
+}
+
+.btn-circle-arrow:focus, .btn-circle-arrow:hover {
+    color: white;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-arrow {
+    font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+
 .btn {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -178,17 +209,23 @@ img::-moz-selection {
   }
 }
 
+.arrow-placement-down {
+    position: absolute;
+    top: 90vh;
+    transform: translateY(-100%);
+}
+
 header.masthead {
-  text-align: center;
-  color: white;
-  background-image: url("../img/header-bg.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    text-align: center;
+    color: white;
+    background-image: url("https://hdwallsource.com/img/2014/2/gif-wallpaper-32368-33113-hd-wallpapers.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 header.masthead .intro-text {
