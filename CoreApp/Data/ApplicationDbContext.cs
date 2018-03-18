@@ -22,5 +22,11 @@ namespace CoreApp.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<CoreApp.Models.Person> Person { get; set; }
+
+        public DbSet<CoreApp.Models.Employer> Employer { get; set; }
+
+        public DbSet<CoreApp.Models.Job> Job { get; set; }
     }
 }

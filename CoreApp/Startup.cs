@@ -63,8 +63,18 @@ namespace CoreApp
                      googleOptions.ClientId = googleConfig.ClientId;
                      googleOptions.ClientSecret = googleConfig.ClientSecret;
                 });
-           
-           
+
+            ////This is Charity  config routing.
+            //var charityConfig = new APIsettings();
+            //Configuration.GetSection("CharityAPISettings")
+            //    .Bind(charityConfig);
+            //services
+            //    .(charityOptions =>
+            //    {
+            //        charityOptions.AppId = charityConfig.ClientId;
+            //        charityOptions.ClientSecret = charityConfig.ClientSecret;
+            //    });
+
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
