@@ -11,7 +11,8 @@ For those that want to help or need help...
 * Setup Environment
 - [x] Setup Github Repository
 - [x] Purchase Domain name www.prosperfreak.com
-- [ ] Look and Feel (Bootstrap) - Tucker
+- [X] Splash Page (Bootstrap) - Tucker
+- [X] Look and Feel (Bootstrap) - Tucker
 - [ ] Branding / Multimedia / Video - Tucker
 - [x] OAuth - Facebook/Google - Cal
 - [ ] Skeletal Structure - Thomas / Tyler
