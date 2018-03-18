@@ -239,6 +239,19 @@ img::-moz-selection {
     transform: translateY(-100%);
 }
 
+.help-placement-down-center {
+    position: center;
+    top: 90vh;
+    transform: translateY(-100%);
+}
+
+/*.helpme-placement-down-left {
+    position: absolute;
+    left: 30%;
+    top: 90vh;
+    transform: translateY(-100%);
+}*/
+
 
 header.masthead {
     text-align: center;
