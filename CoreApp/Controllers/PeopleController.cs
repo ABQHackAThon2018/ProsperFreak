@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CoreApp.Data;
 using CoreApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoreApp.Controllers
 {
+    [Authorize]
     public class PeopleController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -34,7 +36,7 @@ namespace CoreApp.Controllers
             }
 
             var person = await _context.Person
-                .SingleOrDefaultAsync(m => m.ID == id);
+                .SingleOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
                 return NotFound();
@@ -73,7 +75,7 @@ namespace CoreApp.Controllers
                 return NotFound();
             }
 
-            var person = await _context.Person.SingleOrDefaultAsync(m => m.ID == id);
+            var person = await _context.Person.SingleOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
                 return NotFound();
@@ -88,7 +90,7 @@ namespace CoreApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstName,PhoneNumber,Email")] Person person)
         {
-            if (id != person.ID)
+            if (id != person.PersonID)
             {
                 return NotFound();
             }
@@ -102,7 +104,7 @@ namespace CoreApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PersonExists(person.ID))
+                    if (!PersonExists(person.PersonID))
                     {
                         return NotFound();
                     }
@@ -125,7 +127,7 @@ namespace CoreApp.Controllers
             }
 
             var person = await _context.Person
-                .SingleOrDefaultAsync(m => m.ID == id);
+                .SingleOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
                 return NotFound();
@@ -139,7 +141,7 @@ namespace CoreApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var person = await _context.Person.SingleOrDefaultAsync(m => m.ID == id);
+            var person = await _context.Person.SingleOrDefaultAsync(m => m.PersonID == id);
             _context.Person.Remove(person);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -147,7 +149,7 @@ namespace CoreApp.Controllers
 
         private bool PersonExists(int id)
         {
-            return _context.Person.Any(e => e.ID == id);
+            return _context.Person.Any(e => e.PersonID == id);
         }
     }
 }

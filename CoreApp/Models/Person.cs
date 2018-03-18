@@ -5,7 +5,7 @@ namespace CoreApp.Models
 {
     public class Person
     {
-        public int ID { get; set; }
+        public int PersonID { get; set; }
 
         [Required]
         [RegularExpression(@"[A-Za-z\s'-]*$")]

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CoreApp.Pages
 {
-    public class HelperIntialSurveyModel : PageModel
+    public class HelpInitialModel : PageModel
     {
         public void OnGet()
         {

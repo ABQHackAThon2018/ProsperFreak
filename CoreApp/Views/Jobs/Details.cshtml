@@ -23,26 +23,32 @@
             @Html.DisplayFor(model => model.Task)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DateTime)
+            @Html.DisplayNameFor(model => model.Date)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DateTime)
+            @Html.DisplayFor(model => model.Date)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Payment)
+            @Html.DisplayNameFor(model => model.Time)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Payment)
+            @Html.DisplayFor(model => model.Time)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Food)
+            @Html.DisplayNameFor(model => model.PaymentAmount)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Food)
+            @Html.DisplayFor(model => model.PaymentAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FreeFood)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FreeFood)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.JobID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
