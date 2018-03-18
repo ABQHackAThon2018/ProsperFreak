@@ -19,7 +19,7 @@ namespace CoreApp.Models
         public DateTime Time { get; set; }
 
         [DataType(DataType.Currency)]
-        public int PaymentAmount { get; set; }
+        public double PaymentAmount { get; set; }
 
         public bool FreeFood { get; set; }
     }
