@@ -12,8 +12,8 @@ using System;
 namespace CoreApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180318093401_Initial")]
-    partial class Initial
+    [Migration("20180318164959_modelupdates")]
+    partial class modelupdates
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -78,17 +78,19 @@ namespace CoreApp.Data.Migrations
                     b.Property<int>("JobID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DateTime");
+                    b.Property<DateTime>("Date");
 
                     b.Property<int?>("EmployerID");
 
-                    b.Property<bool>("Food");
+                    b.Property<bool>("FreeFood");
 
-                    b.Property<int>("Payment");
+                    b.Property<int>("PaymentAmount");
 
                     b.Property<string>("PositionTitle");
 
                     b.Property<string>("Task");
+
+                    b.Property<DateTime>("Time");
 
                     b.HasKey("JobID");
 
@@ -230,6 +232,37 @@ namespace CoreApp.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CoreApp.Models.ApplicantModel", b =>
+                {
+                    b.HasBaseType("CoreApp.Models.Person");
+
+                    b.Property<bool>("Administrative");
+
+                    b.Property<bool>("AutoMechanic");
+
+                    b.Property<bool>("AvailableNow");
+
+                    b.Property<bool>("Construction");
+
+                    b.Property<bool>("CustomerService");
+
+                    b.Property<DateTime>("EndTime");
+
+                    b.Property<bool>("Foodprep");
+
+                    b.Property<bool>("Housework");
+
+                    b.Property<int>("JobID");
+
+                    b.Property<bool>("Landscaping");
+
+                    b.Property<DateTime>("StartTime");
+
+                    b.ToTable("ApplicantModel");
+
+                    b.HasDiscriminator().HasValue("ApplicantModel");
                 });
 
             modelBuilder.Entity("CoreApp.Models.Employer", b =>

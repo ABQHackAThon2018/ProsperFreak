@@ -28,5 +28,7 @@ namespace CoreApp.Data
         public DbSet<CoreApp.Models.Employer> Employer { get; set; }
 
         public DbSet<CoreApp.Models.Job> Job { get; set; }
+
+        public DbSet<CoreApp.Models.ApplicantModel> ApplicantModel { get; set; }
     }
 }

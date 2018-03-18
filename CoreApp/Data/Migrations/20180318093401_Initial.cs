@@ -89,7 +89,7 @@ namespace CoreApp.Data.Migrations
                 table: "AspNetUserTokens",
                 column: "UserId",
                 principalTable: "AspNetUsers",
-                principalColumn: "Id",
+                principalColumn: "JobID",
                 onDelete: ReferentialAction.Cascade);
         }
 

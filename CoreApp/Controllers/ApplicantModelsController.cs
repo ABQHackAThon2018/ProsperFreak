@@ -12,22 +12,22 @@ using Microsoft.AspNetCore.Authorization;
 namespace CoreApp.Controllers
 {
     [Authorize]
-    public class JobsController : Controller
+    public class ApplicantModelsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public JobsController(ApplicationDbContext context)
+        public ApplicantModelsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Jobs
+        // GET: ApplicantModels
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Job.ToListAsync());
+            return View(await _context.ApplicantModel.ToListAsync());
         }
 
-        // GET: Jobs/Details/5
+        // GET: ApplicantModels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,39 +35,39 @@ namespace CoreApp.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job
-                .SingleOrDefaultAsync(m => m.JobID == id);
-            if (job == null)
+            var applicantModel = await _context.ApplicantModel
+                .SingleOrDefaultAsync(m => m.PersonID == id);
+            if (applicantModel == null)
             {
                 return NotFound();
             }
 
-            return View(job);
+            return View(applicantModel);
         }
 
-        // GET: Jobs/Create
+        // GET: ApplicantModels/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Jobs/Create
+        // POST: ApplicantModels/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("JobID,PositionTitle,Task,DateTime,Payment,Food")] Job job)
+        public async Task<IActionResult> Create([Bind("JobID,Landscaping,Housework,Construction,Foodprep,AutoMechanic,CustomerService,Administrative,AvailableNow,StartTime,EndTime,ID,LastName,FirstName,PhoneNumber,Email")] ApplicantModel applicantModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(job);
+                _context.Add(applicantModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(job);
+            return View(applicantModel);
         }
 
-        // GET: Jobs/Edit/5
+        // GET: ApplicantModels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +75,22 @@ namespace CoreApp.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job.SingleOrDefaultAsync(m => m.JobID == id);
-            if (job == null)
+            var applicantModel = await _context.ApplicantModel.SingleOrDefaultAsync(m => m.PersonID == id);
+            if (applicantModel == null)
             {
                 return NotFound();
             }
-            return View(job);
+            return View(applicantModel);
         }
 
-        // POST: Jobs/Edit/5
+        // POST: ApplicantModels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("JobID,PositionTitle,Task,DateTime,Payment,Food")] Job job)
+        public async Task<IActionResult> Edit(int id, [Bind("JobID,Landscaping,Housework,Construction,Foodprep,AutoMechanic,CustomerService,Administrative,AvailableNow,StartTime,EndTime,ID,LastName,FirstName,PhoneNumber,Email")] ApplicantModel applicantModel)
         {
-            if (id != job.JobID)
+            if (id != applicantModel.PersonID)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace CoreApp.Controllers
             {
                 try
                 {
-                    _context.Update(job);
+                    _context.Update(applicantModel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!JobExists(job.JobID))
+                    if (!ApplicantModelExists(applicantModel.PersonID))
                     {
                         return NotFound();
                     }
@@ -115,10 +115,10 @@ namespace CoreApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(job);
+            return View(applicantModel);
         }
 
-        // GET: Jobs/Delete/5
+        // GET: ApplicantModels/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +126,30 @@ namespace CoreApp.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job
-                .SingleOrDefaultAsync(m => m.JobID == id);
-            if (job == null)
+            var applicantModel = await _context.ApplicantModel
+                .SingleOrDefaultAsync(m => m.PersonID == id);
+            if (applicantModel == null)
             {
                 return NotFound();
             }
 
-            return View(job);
+            return View(applicantModel);
         }
 
-        // POST: Jobs/Delete/5
+        // POST: ApplicantModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var job = await _context.Job.SingleOrDefaultAsync(m => m.JobID == id);
-            _context.Job.Remove(job);
+            var applicantModel = await _context.ApplicantModel.SingleOrDefaultAsync(m => m.PersonID == id);
+            _context.ApplicantModel.Remove(applicantModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool JobExists(int id)
+        private bool ApplicantModelExists(int id)
         {
-            return _context.Job.Any(e => e.JobID == id);
+            return _context.ApplicantModel.Any(e => e.PersonID == id);
         }
     }
 }

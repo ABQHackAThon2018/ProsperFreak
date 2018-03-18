@@ -23,7 +23,7 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("CoreApp.Models.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("JobID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
@@ -59,7 +59,7 @@ namespace CoreApp.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
-                    b.HasKey("Id");
+                    b.HasKey("JobID");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -74,22 +74,24 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("CoreApp.Models.Job", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("JobID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DateTime");
+                    b.Property<DateTime>("Date");
 
                     b.Property<int?>("EmployerID");
 
-                    b.Property<bool>("Food");
+                    b.Property<bool>("FreeFood");
 
-                    b.Property<int>("Payment");
+                    b.Property<int>("PaymentAmount");
 
                     b.Property<string>("PositionTitle");
 
                     b.Property<string>("Task");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("Time");
+
+                    b.HasKey("JobID");
 
                     b.HasIndex("EmployerID");
 
@@ -125,7 +127,7 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("JobID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ConcurrencyStamp")
@@ -137,7 +139,7 @@ namespace CoreApp.Data.Migrations
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256);
 
-                    b.HasKey("Id");
+                    b.HasKey("JobID");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
@@ -149,7 +151,7 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("JobID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
@@ -159,7 +161,7 @@ namespace CoreApp.Data.Migrations
                     b.Property<string>("RoleId")
                         .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("JobID");
 
                     b.HasIndex("RoleId");
 
@@ -168,7 +170,7 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("JobID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
@@ -178,7 +180,7 @@ namespace CoreApp.Data.Migrations
                     b.Property<string>("UserId")
                         .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("JobID");
 
                     b.HasIndex("UserId");
 
@@ -229,6 +231,37 @@ namespace CoreApp.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CoreApp.Models.ApplicantModel", b =>
+                {
+                    b.HasBaseType("CoreApp.Models.Person");
+
+                    b.Property<bool>("Administrative");
+
+                    b.Property<bool>("AutoMechanic");
+
+                    b.Property<bool>("AvailableNow");
+
+                    b.Property<bool>("Construction");
+
+                    b.Property<bool>("CustomerService");
+
+                    b.Property<DateTime>("EndTime");
+
+                    b.Property<bool>("Foodprep");
+
+                    b.Property<bool>("Housework");
+
+                    b.Property<int>("JobID");
+
+                    b.Property<bool>("Landscaping");
+
+                    b.Property<DateTime>("StartTime");
+
+                    b.ToTable("ApplicantModel");
+
+                    b.HasDiscriminator().HasValue("ApplicantModel");
                 });
 
             modelBuilder.Entity("CoreApp.Models.Employer", b =>

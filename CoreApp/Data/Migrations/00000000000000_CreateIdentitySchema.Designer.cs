@@ -21,7 +21,7 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("JobID");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -32,7 +32,7 @@ namespace CoreApp.Data.Migrations
                     b.Property<string>("NormalizedName")
                         .HasAnnotation("MaxLength", 256);
 
-                    b.HasKey("Id");
+                    b.HasKey("JobID");
 
                     b.HasIndex("NormalizedName")
                         .HasName("RoleNameIndex");
@@ -42,7 +42,7 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("JobID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
@@ -52,7 +52,7 @@ namespace CoreApp.Data.Migrations
                     b.Property<string>("RoleId")
                         .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("JobID");
 
                     b.HasIndex("RoleId");
 
@@ -61,7 +61,7 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("JobID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
@@ -71,7 +71,7 @@ namespace CoreApp.Data.Migrations
                     b.Property<string>("UserId")
                         .IsRequired();
 
-                    b.HasKey("Id");
+                    b.HasKey("JobID");
 
                     b.HasIndex("UserId");
 
@@ -128,7 +128,7 @@ namespace CoreApp.Data.Migrations
 
             modelBuilder.Entity("CoreApp.Models.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("JobID");
 
                     b.Property<int>("AccessFailedCount");
 
@@ -163,7 +163,7 @@ namespace CoreApp.Data.Migrations
                     b.Property<string>("UserName")
                         .HasAnnotation("MaxLength", 256);
 
-                    b.HasKey("Id");
+                    b.HasKey("JobID");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");

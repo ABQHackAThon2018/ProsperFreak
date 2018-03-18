@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CoreApp.Data;
 using CoreApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoreApp.Controllers
 {
+    [Authorize]
     public class EmployersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -34,7 +36,7 @@ namespace CoreApp.Controllers
             }
 
             var employer = await _context.Employer
-                .SingleOrDefaultAsync(m => m.ID == id);
+                .SingleOrDefaultAsync(m => m.PersonID == id);
             if (employer == null)
             {
                 return NotFound();
@@ -73,7 +75,7 @@ namespace CoreApp.Controllers
                 return NotFound();
             }
 
-            var employer = await _context.Employer.SingleOrDefaultAsync(m => m.ID == id);
+            var employer = await _context.Employer.SingleOrDefaultAsync(m => m.PersonID == id);
             if (employer == null)
             {
                 return NotFound();
@@ -88,7 +90,7 @@ namespace CoreApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Industry,Title,JobsAvailable,ID,LastName,FirstName,PhoneNumber,Email")] Employer employer)
         {
-            if (id != employer.ID)
+            if (id != employer.PersonID)
             {
                 return NotFound();
             }
@@ -102,7 +104,7 @@ namespace CoreApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployerExists(employer.ID))
+                    if (!EmployerExists(employer.PersonID))
                     {
                         return NotFound();
                     }
@@ -125,7 +127,7 @@ namespace CoreApp.Controllers
             }
 
             var employer = await _context.Employer
-                .SingleOrDefaultAsync(m => m.ID == id);
+                .SingleOrDefaultAsync(m => m.PersonID == id);
             if (employer == null)
             {
                 return NotFound();
@@ -139,7 +141,7 @@ namespace CoreApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employer = await _context.Employer.SingleOrDefaultAsync(m => m.ID == id);
+            var employer = await _context.Employer.SingleOrDefaultAsync(m => m.PersonID == id);
             _context.Employer.Remove(employer);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -147,7 +149,7 @@ namespace CoreApp.Controllers
 
         private bool EmployerExists(int id)
         {
-            return _context.Employer.Any(e => e.ID == id);
+            return _context.Employer.Any(e => e.PersonID == id);
         }
     }
 }
